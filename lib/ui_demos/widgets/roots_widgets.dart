@@ -1,14 +1,8 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutterDemos/ui_demos/router_examples/first_page.dart';
-import 'package:flutterDemos/ui_demos/widgets/roots_widgets.dart';
+import 'package:flutterDemos/ui_demos/widgets/tab_views.dart';
 
-import 'layout_widgt/layout_list.dart';
-
-class UIList extends StatelessWidget {
-  final List<String> demosTitles = ["生命周期","路由","LayoutList","组件Widgets"];
-  static const routeName = "UIList";
-  static final routeSettings = RouteSettings(name:UIList.routeName);
+class RootsWidgets extends StatelessWidget {
+  final List<String> demosTitles = ["tab_tabViews","tab_PageView"];
 
   @override
   Widget build(BuildContext context) {
@@ -37,17 +31,10 @@ class UIList extends StatelessWidget {
   }
 
   void listTapedIndex(ctx,index){
-    if (index == 1) {
-      var page = FirstPage();
+     if (index == 0) {
+      var page = TabViewPage();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
-    if (index == 2){
-      var page = LayoutList();
-      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
-    }
-    if (index == 3){
-      var page = RootsWidgets();
-      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
-    }
+
   }
 }
