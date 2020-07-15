@@ -1,40 +1,86 @@
 import 'package:flutter/material.dart';
+import 'package:flutterDemos/ui_demos/widgets/page_feature.dart';
+import 'package:flutterDemos/ui_demos/widgets/tab_pageViews.dart';
 import 'package:flutterDemos/ui_demos/widgets/tab_views.dart';
+import 'package:flutterDemos/ui_demos/widgets/textField_demo.dart';
+
+import 'bottom_navigate_views.dart';
+import 'load_Image_demo.dart';
+import 'login_page.dart';
 
 class RootsWidgets extends StatelessWidget {
-  final List<String> demosTitles = ["tab_tabViews","tab_PageView"];
+  final List<String> demosTitles = [
+    "tab_tabBarViews",
+    "tab_PageView",
+    "加载图片资源",
+    "textField",
+    "TabController",
+    "深入Scaffold",
+    "登录页的例子"
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Container(
-        child: createList(),
-      ),
-      appBar:AppBar(title:Text("UIList"))
-    );
+        body: Container(
+          child: createList(),
+        ),
+        appBar: AppBar(title: Text("UIList")));
   }
 
-  Widget createList(){
-    return  ListView.separated(itemBuilder: (ctx,index){
-        return InkWell(
-                onTap: (){
-                  listTapedIndex(ctx, index);
-                },
-                child: ListTile(
-                    title:Text(demosTitles[index]),
-                    trailing: Icon(Icons.arrow_right),
-                ),
-              );
-      }, separatorBuilder: (ctx,index){
-        return Divider();
-      }, itemCount: demosTitles.length);
+  Widget createList() {
+    return ListView.separated(
+        itemBuilder: (ctx, index) {
+          return InkWell(
+            onTap: () {
+              listTapedIndex(ctx, index);
+            },
+            child: ListTile(
+              title: Text(demosTitles[index]),
+              trailing: Icon(Icons.arrow_right),
+            ),
+          );
+        },
+        separatorBuilder: (ctx, index) {
+          return Divider();
+        },
+        itemCount: demosTitles.length);
   }
 
-  void listTapedIndex(ctx,index){
-     if (index == 0) {
+  void listTapedIndex(ctx, index) {
+    if (index == 0) {
       var page = TabViewPage();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
 
+    if (index == 1) {
+      var page = TabPageView();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+
+    if (index == 2) {
+      var page = ImageAssetDemoPage();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+
+    if (index == 3) {
+      var page = TextFieldDemos();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+
+    if (index == 4) {
+      var page = BottomNaviPages();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+
+    if (index == 5) {
+       var page = DeepLearnPage();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+
+    if (index == 6) {
+       var page = LoginPage();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
   }
 }
