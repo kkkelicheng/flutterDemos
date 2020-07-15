@@ -1,10 +1,10 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutterDemos/ui_demos/ui_list.dart';
 
-import 'logics_demos/root_logics.dart';
+import 'file_demos.dart';
 
-class DemoList extends StatelessWidget {
-  final List<String> demosTitles = ["UI_s", "Logic", "Interaction"];
+class LogicsDemos extends StatelessWidget {
+  final List<String> demosTitles = ["截图写入某路径",];
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class DemoList extends StatelessWidget {
         body: Container(
           child: createList(),
         ),
-        appBar: AppBar(title: Text("DemoList")));
+        appBar: AppBar(title: Text("LogicsDemos")));
   }
 
   Widget createList() {
@@ -36,16 +36,9 @@ class DemoList extends StatelessWidget {
 
   void listTapedIndex(ctx, index) {
     if (index == 0) {
-      Navigator.of(ctx).push(
-        MaterialPageRoute(
-            builder: (context) => UIList(), settings: UIList.routeSettings),
-      );
-    }
-
-    if (index == 1) {
-      // LogicsDemos
-      var page = LogicsDemos();
+      var page = HandleFilePathPage();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
+
   }
 }
