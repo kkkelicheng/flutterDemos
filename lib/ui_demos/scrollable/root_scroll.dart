@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutterDemos/ui_demos/router_examples/first_page.dart';
-import 'package:flutterDemos/ui_demos/scrollable/root_scroll.dart';
-import 'package:flutterDemos/ui_demos/widgets/roots_widgets.dart';
+import 'package:flutterDemos/ui_demos/scrollable/single_child_sv.dart';
+import 'package:flutterDemos/ui_demos/scrollable/wheel_scroll.dart';
 
-import 'layout_widgt/layout_list.dart';
-import 'life_cycles/root_life_cycle.dart';
+import 'Expansio_panel.dart';
+import 'expansion_tile.dart';
 
-class UIList extends StatelessWidget {
-  final List<String> demosTitles = ["生命周期", "路由", "LayoutList", "组件Widgets","可滑动"];
-  static const routeName = "UIList";
-  static final routeSettings = RouteSettings(name: UIList.routeName);
+class ScrollableDemos extends StatelessWidget {
+  final List<String> demosTitles = [
+    "ExpansionTile 折叠菜单",
+    "ExpansionPanelList 可展开列表",
+    "ListWheelScrollView 滚筒效果",
+    "单子元素滚动包裹"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class UIList extends StatelessWidget {
         body: Container(
           child: createList(),
         ),
-        appBar: AppBar(title: Text("UIList")));
+        appBar: AppBar(title: Text("可滑动demos")));
   }
 
   Widget createList() {
@@ -41,24 +43,22 @@ class UIList extends StatelessWidget {
 
   void listTapedIndex(ctx, index) {
     if (index == 0) {
-      var page = RootsLifeWidgets();
+      var page = ExpansionTileDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
 
     if (index == 1) {
-      var page = FirstPage();
+      var page = ExpansionPanelDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
+
     if (index == 2) {
-      var page = LayoutList();
+      var page = ListWheelSVDemos();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
+
     if (index == 3) {
-      var page = RootsWidgets();
-      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
-    }
-    if (index == 4) {
-      var page = ScrollableDemos();
+      var page = SingleChildSVDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }
