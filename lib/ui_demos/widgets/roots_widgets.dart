@@ -4,7 +4,9 @@ import 'package:flutterDemos/ui_demos/widgets/tab_pageViews.dart';
 import 'package:flutterDemos/ui_demos/widgets/tab_views.dart';
 import 'package:flutterDemos/ui_demos/widgets/textField_demo.dart';
 
+import 'Expansio_panel.dart';
 import 'bottom_navigate_views.dart';
+import 'expansion_tile.dart';
 import 'load_Image_demo.dart';
 import 'login_page.dart';
 
@@ -16,7 +18,9 @@ class RootsWidgets extends StatelessWidget {
     "textField",
     "TabController",
     "深入Scaffold",
-    "登录页的例子"
+    "登录页的例子",
+    "ExpansionTile 折叠菜单",
+    "ExpansionPanelList 可展开列表",
   ];
 
   @override
@@ -80,6 +84,16 @@ class RootsWidgets extends StatelessWidget {
 
     if (index == 6) {
        var page = LoginPage();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+
+    if (index == 7) {
+      var page = ExpansionTileDemo();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+
+    if (index == 8) {
+      var page = ExpansionPanelDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }

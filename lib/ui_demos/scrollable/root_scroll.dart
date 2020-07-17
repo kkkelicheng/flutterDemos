@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutterDemos/ui_demos/scrollable/single_child_sv.dart';
 import 'package:flutterDemos/ui_demos/scrollable/wheel_scroll.dart';
 
-import 'Expansio_panel.dart';
-import 'expansion_tile.dart';
+import 'custom_sv.dart';
+import 'grid_view.dart';
+import 'list_view.dart';
 
 class ScrollableDemos extends StatelessWidget {
   final List<String> demosTitles = [
-    "ExpansionTile 折叠菜单",
-    "ExpansionPanelList 可展开列表",
     "ListWheelScrollView 滚筒效果",
-    "单子元素滚动包裹"
+    "单子元素滚动包裹",
+    "单滚动模型 listView",
+    "单滚动模型 gradView",
+    "pageView 可以看widgets",
+    "多滚动模型 CustomScrollView"
   ];
 
   @override
@@ -43,23 +46,29 @@ class ScrollableDemos extends StatelessWidget {
 
   void listTapedIndex(ctx, index) {
     if (index == 0) {
-      var page = ExpansionTileDemo();
-      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
-    }
-
-    if (index == 1) {
-      var page = ExpansionPanelDemo();
-      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
-    }
-
-    if (index == 2) {
       var page = ListWheelSVDemos();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
 
-    if (index == 3) {
+    if (index == 1) {
       var page = SingleChildSVDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
+
+    if (index == 2) {
+      var page = ListViewDemo();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+
+    if (index == 3) {
+      var page = GridViewDemo();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+
+    if (index == 4) {
+      var page = CustomSVDemo();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+
   }
 }

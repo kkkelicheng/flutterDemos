@@ -3,11 +3,18 @@ import 'package:flutterDemos/ui_demos/router_examples/first_page.dart';
 import 'package:flutterDemos/ui_demos/scrollable/root_scroll.dart';
 import 'package:flutterDemos/ui_demos/widgets/roots_widgets.dart';
 
+import 'dialog_widget/root_dialog.dart';
 import 'layout_widgt/layout_list.dart';
 import 'life_cycles/root_life_cycle.dart';
 
 class UIList extends StatelessWidget {
-  final List<String> demosTitles = ["生命周期", "路由", "LayoutList", "组件Widgets","可滑动"];
+  final List<String> demosTitles = [
+    "生命周期",
+     "路由",
+      "LayoutList",
+       "组件Widgets",
+       "可滑动",
+       "对话框"];
   static const routeName = "UIList";
   static final routeSettings = RouteSettings(name: UIList.routeName);
 
@@ -59,6 +66,10 @@ class UIList extends StatelessWidget {
     }
     if (index == 4) {
       var page = ScrollableDemos();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 5) {
+      var page = RootsDialogWidgets();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }

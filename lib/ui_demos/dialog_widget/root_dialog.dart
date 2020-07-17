@@ -1,12 +1,17 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutterDemos/logics_demos/sqlite_demo.dart';
-import 'package:flutterDemos/logics_demos/user_default.dart';
 
-import 'file_demos.dart';
+import 'dialog_base_demo.dart';
+import 'dialog_list.dart';
+import 'dialog_bottom_modal.dart';
 
-class LogicsDemos extends StatelessWidget {
-  final List<String> demosTitles = ["截图写入某路径","数据持久化 plist","数据持久化 db"];
+class RootsDialogWidgets extends StatelessWidget {
+  final List<String> demosTitles = [
+    "基本对话框",
+    "ListView自定义《简单》对话框",
+    "真自定义对话框",
+    "底部模态对话框 & bottomSheet",
+    
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,7 @@ class LogicsDemos extends StatelessWidget {
         body: Container(
           child: createList(),
         ),
-        appBar: AppBar(title: Text("LogicsDemos")));
+        appBar: AppBar(title: Text("生命周期demos")));
   }
 
   Widget createList() {
@@ -38,19 +43,20 @@ class LogicsDemos extends StatelessWidget {
 
   void listTapedIndex(ctx, index) {
     if (index == 0) {
-      var page = HandleFilePathPage();
+      var page = DialogText();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
-
     if (index == 1) {
-      var page = UserDefaultDemo();
+      var page = ListDialogDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
-
     if (index == 2) {
-      var page = SqDemo();
+      var page = ListDialogDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
-
+    if (index == 3) {
+      var page = MyBottomSheet();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
   }
 }
