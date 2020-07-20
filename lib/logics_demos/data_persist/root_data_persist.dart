@@ -1,12 +1,12 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutterDemos/logics_demos/state_manages/root_state_manages.dart';
+import 'package:flutterDemos/logics_demos/data_persist/sqlite_demo.dart';
+import 'package:flutterDemos/logics_demos/data_persist/user_default.dart';
 
-import 'data_persist/root_data_persist.dart';
+import 'file_demos.dart';
 
-
-class LogicsDemos extends StatelessWidget {
-  final List<String> demosTitles = ["数据持久化","状态管理"];
+class RootDataDemos extends StatelessWidget {
+  final List<String> demosTitles = ["截图写入某路径","数据持久化 plist","数据持久化 db"];
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class LogicsDemos extends StatelessWidget {
         body: Container(
           child: createList(),
         ),
-        appBar: AppBar(title: Text("LogicsDemos")));
+        appBar: AppBar(title: Text("数据持久化")));
   }
 
   Widget createList() {
@@ -38,12 +38,17 @@ class LogicsDemos extends StatelessWidget {
 
   void listTapedIndex(ctx, index) {
     if (index == 0) {
-      var page = RootDataDemos();
+      var page = HandleFilePathPage();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
-    
+
     if (index == 1) {
-      var page = RootStateDemos();
+      var page = UserDefaultDemo();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+
+    if (index == 2) {
+      var page = SqDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
 
