@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterDemos/ui_demos/animations/root_animations.dart';
 import 'package:flutterDemos/ui_demos/router_examples/first_page.dart';
 import 'package:flutterDemos/ui_demos/scrollable/root_scroll.dart';
 import 'package:flutterDemos/ui_demos/widgets/roots_widgets.dart';
@@ -14,7 +15,8 @@ class UIList extends StatelessWidget {
       "LayoutList",
        "组件Widgets",
        "可滑动",
-       "对话框"];
+       "对话框",
+       "动画"];
   static const routeName = "UIList";
   static final routeSettings = RouteSettings(name: UIList.routeName);
 
@@ -70,6 +72,10 @@ class UIList extends StatelessWidget {
     }
     if (index == 5) {
       var page = RootsDialogWidgets();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 6) {
+      var page = RootAnitmations();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }
