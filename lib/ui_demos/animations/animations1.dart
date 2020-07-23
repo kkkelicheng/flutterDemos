@@ -40,6 +40,7 @@ class _Animations1State extends State<Animations1>
     //创建Tween估值器,包含了起始和结束的值
     Tween<double> tween = Tween(begin: 100, end: 200);
     //估值器 + AnimationController（自己其实也是Animation） 就产生了新的 Animation，一个包含了动画数据（补间值）的东西
+    //AnimationController 内部自己有一个插值器的。
     _animation = tween.animate(_aController);
     //AnimationController 控制 Ticker，后面ticker的操作都是通过AnimationController来进行的
 
@@ -106,7 +107,7 @@ class _Animations1State extends State<Animations1>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("简单的动画")),
+        appBar: AppBar(title: Text("简单的线性动画")),
         body: Stack(
           children: <Widget>[box(), buttons()],
         ));
