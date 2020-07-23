@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterDemos/ui_demos/dialog_widget/toast_base.dart';
 
 import 'dialog_base_demo.dart';
 import 'dialog_list.dart';
@@ -10,7 +11,7 @@ class RootsDialogWidgets extends StatelessWidget {
     "ListView自定义《简单》对话框",
     "真自定义对话框",
     "底部模态对话框 & bottomSheet",
-    
+    "基础的悬浮框",
   ];
 
   @override
@@ -56,6 +57,10 @@ class RootsDialogWidgets extends StatelessWidget {
     }
     if (index == 3) {
       var page = MyBottomSheet();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 4) {
+      var page = TestOverlayDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }
