@@ -14,6 +14,7 @@ class _ValueBandingTestPageState extends State<ValueBandingTestPage> {
       child: Builder(builder: (ctx){
         CountWidget ctWidget = CountWidget.of(ctx);
         return Scaffold(
+          appBar: AppBar(title: Text("自带局部数据刷新三板斧")),
         body: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,

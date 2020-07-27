@@ -18,6 +18,7 @@ class _InheritedTestPageState extends State<InheritedTestPage> {
         print("buildScaffold");
         var count = CountWidget.of(ctx).count;
         return Scaffold(
+        appBar: AppBar(title: Text("数据共享例子")),
         body: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
