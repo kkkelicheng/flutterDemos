@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterDemos/ui_demos/animations/root_animations.dart';
 import 'package:flutterDemos/ui_demos/router_examples/first_page.dart';
+import 'package:flutterDemos/ui_demos/router_examples/fluro_wrap.dart';
 import 'package:flutterDemos/ui_demos/scrollable/root_scroll.dart';
 import 'package:flutterDemos/ui_demos/widgets/roots_widgets.dart';
 
@@ -11,12 +12,15 @@ import 'life_cycles/root_life_cycle.dart';
 class UIList extends StatelessWidget {
   final List<String> demosTitles = [
     "生命周期",
-     "路由",
-      "LayoutList",
-       "组件Widgets",
-       "可滑动",
-       "对话框",
-       "动画"];
+    "路由",
+    "LayoutList",
+    "组件Widgets",
+    "可滑动",
+    "对话框",
+    "动画",
+    "Fluro 无参数",
+    "Fluro 有参数"
+  ];
   static const routeName = "UIList";
   static final routeSettings = RouteSettings(name: UIList.routeName);
 
@@ -77,6 +81,12 @@ class UIList extends StatelessWidget {
     if (index == 6) {
       var page = RootAnitmations();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 7) {
+      MyFluro().navigateFromBottom(ctx, MyFluro.fluro_demo1);
+    }
+    if (index == 8) {
+      MyFluro().navigateFromBottom(ctx, MyFluro.fluro_demo2, "?id=100");
     }
   }
 }

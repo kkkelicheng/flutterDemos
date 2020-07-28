@@ -31,6 +31,8 @@ dependencies:
   path_provider: ^1.6.7
   shared_preferences: ^0.5.8
   provider: ^4.3.1
+  # 第三方的路由，可以使用类似前端的那种url解析跳转页面
+  fluro: "^1.6.3"
 
 dev_dependencies:
   flutter_test:

@@ -22,6 +22,11 @@ class MyApp extends StatelessWidget {
     var themeProvider = context.watch<ThemeProvider>();
     return MaterialApp(
         title: 'MyFlutterDemos',
+        //typedef RouteFactory = Route<dynamic> Function(RouteSettings settings);
+        onGenerateRoute: (RouteSettings settings) {
+          print("onGenerateRoute");
+          return MaterialPageRoute(builder:(_)=>EmptyPages(),settings:settings);
+        },
         theme: ThemeData(
           primarySwatch: themeProvider.primarySwitch,
           // This makes the visual density adapt to the platform that you run
@@ -30,5 +35,17 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: DemoList());
+  }
+}
+
+class EmptyPages extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("空页面")),
+      body: Center(
+        child: Text("空"),
+      ),
+    );
   }
 }
