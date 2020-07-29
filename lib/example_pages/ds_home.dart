@@ -14,11 +14,30 @@ class _ShopHomePageState extends State<ShopHomePage> {
     );
   }
 
+  ///
+  /// Body
+  ///
+  Widget _buildBody() {
+    return GridView.builder(
+        gridDelegate: createGridDelegate(3),
+        itemBuilder: (ctx, index) {
+          return Container(
+            color: Colors.green,
+            child: Center(
+              child: Text("$index",
+                  style: TextStyle(color: Colors.white, fontSize: 23)),
+            ),
+          );
+        });
+  }
 
-///
-/// Body
-///
-  Widget _buildBody(){
-    return 
+  SliverGridDelegate createGridDelegate(int columnCount) {
+    return SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: columnCount,
+      mainAxisSpacing: 10,
+      crossAxisSpacing: 10,
+      childAspectRatio: 1,
+    );
   }
 }
+
