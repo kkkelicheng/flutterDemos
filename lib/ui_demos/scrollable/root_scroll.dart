@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterDemos/ui_demos/scrollable/single_child_sv.dart';
+import 'package:flutterDemos/ui_demos/scrollable/stagger_grid.dart';
 import 'package:flutterDemos/ui_demos/scrollable/wheel_scroll.dart';
 
 import 'custom_sv.dart';
@@ -13,7 +14,8 @@ class ScrollableDemos extends StatelessWidget {
     "单滚动模型 listView",
     "单滚动模型 gradView",
     "pageView 可以看widgets",
-    "多滚动模型 CustomScrollView"
+    "多滚动模型 CustomScrollView",
+    "交错网格"
   ];
 
   @override
@@ -69,6 +71,13 @@ class ScrollableDemos extends StatelessWidget {
       var page = CustomSVDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
-
+    if (index == 5) {
+      // var page = StaggerGridViewDemo();
+      // Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 6) {
+      var page = StaggerGridViewDemo();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
   }
 }

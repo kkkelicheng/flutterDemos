@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutterDemos/ui_demos/ui_list.dart';
 
 import 'dart_lang/dart_singleton.dart';
+import 'example_pages/root_pages.dart';
 import 'logics_demos/root_logics.dart';
 
 class DemoList extends StatelessWidget {
-  final List<String> demosTitles = ["UI_s", "Logic", "Interaction","dart_lang"];
+  final List<String> demosTitles = ["UI_s", "Logic", "电商pages","dart_lang"];
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +51,8 @@ class DemoList extends StatelessWidget {
     }
 
     if (index == 2) {
-      // LogicsDemos
-      // var page = LogicsDemos();
-      // Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+      var page = DSDemos();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
 
     if (index == 3) {
