@@ -40,4 +40,3 @@ class _ShopHomePageState extends State<ShopHomePage> {
     );
   }
 }
-

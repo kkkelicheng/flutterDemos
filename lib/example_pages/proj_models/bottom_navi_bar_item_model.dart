@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutterDemos/example_pages/proj_tools/extension_views.dart';
 import 'package:flutterDemos/example_pages/proj_tools/extension_string.dart';
@@ -26,7 +25,7 @@ class BottomNaviBarItemModel {
       nIcon = normalIcon;
     }
 
-    Widget sIcon ;
+    Widget sIcon;
     if (selectImageUrl.lcIsNotEmpty) {
       sIcon = ImageViewLoad.lcNetwork(selectImageUrl);
     } else {
