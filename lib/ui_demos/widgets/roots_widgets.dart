@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterDemos/ui_demos/widgets/page_feature.dart';
+import 'package:flutterDemos/ui_demos/widgets/pager.dart';
 import 'package:flutterDemos/ui_demos/widgets/tab_pageViews.dart';
 import 'package:flutterDemos/ui_demos/widgets/tab_views.dart';
 import 'package:flutterDemos/ui_demos/widgets/textField_demo.dart';
@@ -12,15 +13,16 @@ import 'login_page.dart';
 
 class RootsWidgets extends StatelessWidget {
   final List<String> demosTitles = [
-    "tab_tabBarViews",
+    "tab_tabBarViews", //0
     "tab_PageView",
     "加载图片资源",
     "textField",
-    "TabController",
+    "TabController", //4
     "深入Scaffold",
     "登录页的例子",
     "ExpansionTile 折叠菜单",
     "ExpansionPanelList 可展开列表",
+    "Pager", //9
   ];
 
   @override
@@ -78,12 +80,12 @@ class RootsWidgets extends StatelessWidget {
     }
 
     if (index == 5) {
-       var page = DeepLearnPage();
+      var page = DeepLearnPage();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
 
     if (index == 6) {
-       var page = LoginPage();
+      var page = LoginPage();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
 
@@ -94,6 +96,10 @@ class RootsWidgets extends StatelessWidget {
 
     if (index == 8) {
       var page = ExpansionPanelDemo();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 9) {
+      var page = FLutterPagerDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }
