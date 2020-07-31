@@ -8,6 +8,7 @@ import 'package:flutterDemos/ui_demos/widgets/textField_demo.dart';
 import 'Expansio_panel.dart';
 import 'bottom_navigate_views.dart';
 import 'expansion_tile.dart';
+import 'label_marquee.dart';
 import 'load_Image_demo.dart';
 import 'login_page.dart';
 
@@ -23,6 +24,7 @@ class RootsWidgets extends StatelessWidget {
     "ExpansionTile 折叠菜单",
     "ExpansionPanelList 可展开列表",
     "Pager", //9
+    "跑马灯Label", //10
   ];
 
   @override
@@ -100,6 +102,10 @@ class RootsWidgets extends StatelessWidget {
     }
     if (index == 9) {
       var page = FLutterPagerDemo();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 10) {
+      var page = MarqueeLabelDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }
