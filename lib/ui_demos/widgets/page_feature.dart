@@ -13,13 +13,14 @@ class _DeepLearnPageState extends State<DeepLearnPage> {
         title: Text("深入Page"),
         // leading: ,如果设置了会覆盖drawer的触发
       ),
-      body: Container(
-        color: Colors.orange,
+      body: SingleChildScrollView(
         child: Container(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text("""
+          color: Colors.orange,
+          child: Container(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text("""
 1. page从上到下，
     AppBar ,
     Body,
@@ -46,7 +47,8 @@ BottomNavigationBar()
 它比BottomNavigationBar 灵活，可以放置文字和图标等等控件。
 
 """)
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -66,14 +68,7 @@ BottomNavigationBar()
       ],
 
       //bottomNavigationBar其实有一个配套的控件
-      bottomNavigationBar: BottomNavigationBar(items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("home")),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.cached), title: Text("cached")),
-        BottomNavigationBarItem(icon: Icon(Icons.cake), title: Text("cake")),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.card_giftcard), title: Text("gift")),
-      ]),
+      bottomNavigationBar: _createOtherBottomController2(),
       drawer: Container(
         width: 130,
         color: Colors.green,
@@ -85,5 +80,50 @@ BottomNavigationBar()
         child: Center(child: Text("End Drawer")),
       ),
     );
+  }
+
+  Widget _createTabBarBottomController() {
+    return BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("home")),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.cached), title: Text("cached")),
+          BottomNavigationBarItem(icon: Icon(Icons.cake), title: Text("cake")),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.card_giftcard), title: Text("gift")),
+        ]);
+  }
+
+  Widget _createOtherBottomController2() {
+    return BottomAppBar(
+        color: Colors.orange,
+        child: SizedBox(
+          height: 56,
+          child: Row(
+            children: <Widget>[
+              SizedBox(width: 16),
+              SizedBox(
+                  width: 24, height: 24, child: Container(color: Colors.red)),
+              SizedBox(width: 18),
+              SizedBox(
+                  width: 24, height: 24, child: Container(color: Colors.red)),
+              SizedBox(width: 17),
+              Expanded(
+                  child: Padding(
+                padding: const EdgeInsets.only(right: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(width: 126, height: 40, color: Colors.red),
+                    SizedBox(width: 16),
+                    Container(width: 126, height: 40, color: Colors.red),
+                  ],
+                ),
+              ))
+            ],
+          ),
+        ));
   }
 }
