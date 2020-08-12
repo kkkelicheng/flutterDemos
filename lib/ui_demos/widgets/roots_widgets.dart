@@ -7,6 +7,7 @@ import 'package:flutterDemos/ui_demos/widgets/textField_demo.dart';
 
 import 'Expansio_panel.dart';
 import 'bottom_navigate_views.dart';
+import 'custom_appBar.dart';
 import 'expansion_tile.dart';
 import 'label_marquee.dart';
 import 'load_Image_demo.dart';
@@ -25,6 +26,7 @@ class RootsWidgets extends StatelessWidget {
     "ExpansionPanelList 可展开列表",
     "Pager", //9
     "跑马灯Label", //10
+    "自定义AppBar",
   ];
 
   @override
@@ -106,6 +108,10 @@ class RootsWidgets extends StatelessWidget {
     }
     if (index == 10) {
       var page = MarqueeLabelDemo();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 11) {
+      var page = MyAppBarPage();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }
