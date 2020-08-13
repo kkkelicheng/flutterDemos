@@ -15,6 +15,10 @@ import 'package:flutter/material.dart';
 ///preferredSize = Size.fromHeight(kToolbarHeight + (bottom?.preferredSize?.height ?? 0.0)),
 ///可以看到bottom不存在的时候就是kToolbarHeight的高度
 
+///MyAppBar 这个例子是最开始的测试例子
+///GoodDetailAppBar 是后面改进的例子
+///custom_appBar2中的是一个完整的结合listView变化的例子,但是只是触发部分刷新
+
 class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   double alpha;
   MyAppBar({this.alpha = 0.5}) : super();
@@ -63,7 +67,7 @@ class _MyAppBarPageState extends State<MyAppBarPage> {
     print("MyAppBarPage build padding2:$padding2");
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: MyAppBar(alpha: myAlpha),
+      appBar: GoodDetailAppBar(alpha: myAlpha),
       body: NotificationListener<ScrollNotification>(
         onNotification: (notification) {
           var metrics = notification.metrics;
@@ -94,5 +98,70 @@ class _MyAppBarPageState extends State<MyAppBarPage> {
     } else {
       return defore / 414.0;
     }
+  }
+}
+
+class GoodDetailAppBar extends StatefulWidget implements PreferredSizeWidget {
+  final double alpha;
+  GoodDetailAppBar({this.alpha = 0}) : super();
+
+  @override
+  _GoodDetailAppBarState createState() => _GoodDetailAppBarState();
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+}
+
+class _GoodDetailAppBarState extends State<GoodDetailAppBar> {
+  @override
+  Widget build(BuildContext context) {
+    var bgAlpha = widget.alpha;
+    var titleAlpha = 1 - bgAlpha;
+    return Container(
+      color: Colors.white.withOpacity(bgAlpha),
+      child: SafeArea(
+          top: true,
+          child: Container(
+            child: Stack(
+              children: [
+                centerTitles(bgAlpha),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Opacity(
+                        opacity: titleAlpha, child: Icon(Icons.account_circle)),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Opacity(
+                        opacity: titleAlpha, child: Icon(Icons.account_circle)),
+                  ),
+                )
+              ],
+            ),
+          )),
+    );
+  }
+
+  Widget centerTitles(double titleAlpha) {
+    return Opacity(
+      opacity: titleAlpha,
+      child: Center(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text("详情", style: TextStyle(color: Colors.red, fontSize: 14)),
+            SizedBox(width: 20),
+            Text("评价", style: TextStyle(color: Colors.red, fontSize: 14)),
+            SizedBox(width: 20),
+            Text("记录", style: TextStyle(color: Colors.red, fontSize: 14)),
+          ],
+        ),
+      ),
+    );
   }
 }

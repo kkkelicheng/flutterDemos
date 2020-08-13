@@ -8,6 +8,7 @@ import 'package:flutterDemos/ui_demos/widgets/textField_demo.dart';
 import 'Expansio_panel.dart';
 import 'bottom_navigate_views.dart';
 import 'custom_appBar.dart';
+import 'custom_appBar2.dart';
 import 'expansion_tile.dart';
 import 'label_marquee.dart';
 import 'load_Image_demo.dart';
@@ -27,6 +28,7 @@ class RootsWidgets extends StatelessWidget {
     "Pager", //9
     "跑马灯Label", //10
     "自定义AppBar",
+    "自定义AppBar改良版",
   ];
 
   @override
@@ -112,6 +114,10 @@ class RootsWidgets extends StatelessWidget {
     }
     if (index == 11) {
       var page = MyAppBarPage();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 12) {
+      var page = GoodAppBarPage();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }
