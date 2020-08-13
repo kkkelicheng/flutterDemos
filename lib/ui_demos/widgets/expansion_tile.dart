@@ -10,15 +10,31 @@ class _ExpansionTileDemoState extends State<ExpansionTileDemo> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("折叠菜单demo"),
+          backgroundColor: Colors.black,
+          centerTitle: true,
+          toolbarOpacity: 0.5,
+          actions: <Widget>[
+            SizedBox(
+                width: 24, height: 24, child: Container(color: Colors.orange)),
+            Icon(Icons.access_alarm, color: Colors.white),
+            Icon(Icons.access_time, color: Colors.white),
+          ],
+          title: Container(
+            color: Colors.orange,
+            height: 100,
+            child: Center(
+              child: Text(
+                "折叠菜单demo",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
         ),
         body: Container(
             color: Colors.black12,
             child: Column(
               children: [getBody(), Text("colume 接着ExpansionTile")],
-            )
-          )
-        );
+            )));
   }
 
   Widget getBody() {

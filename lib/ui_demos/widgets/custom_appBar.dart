@@ -1,5 +1,20 @@
 import 'package:flutter/material.dart';
 
+///kToolbarHeight 就是NavigationItems的height
+///关于Toolbar在AppBar上，可以看看文档，文档也没写详细。大概的意思就是跟iOS差不多的，换成了toolbar而已
+///在iOS上NaviBar height = 44
+///而这个在Flutter上，kToolbarHeight却是56
+///自定义的AppBar的组成可以设计成 safearea的top + kToolbarHeight = AppBarHeight
+///MediaQuery 是根据周围环境来确定数据的，在自定义AppBar中的top有数据，bottom没数据的
+///但是在Page页面中 top和bottom都是有数据的
+///自定义的AppBar中top的那部分系统帮你处理了，所以你处理的时候仅仅是处理kToolbarHeight这部分的
+///所以结构是这样的 safearea 下面套个Wideget就好了，这个widget就是kToolbarHeight的高度，不用主动去设置
+///返回preferredSize 直接返回kToolbarHeight
+///
+///官方AppBar的
+///preferredSize = Size.fromHeight(kToolbarHeight + (bottom?.preferredSize?.height ?? 0.0)),
+///可以看到bottom不存在的时候就是kToolbarHeight的高度
+
 class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   double alpha;
   MyAppBar({this.alpha = 0.5}) : super();
@@ -8,7 +23,7 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   _MyAppBarState createState() => _MyAppBarState();
 
   @override
-  Size get preferredSize => Size.fromHeight(44.0);
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
 
 class _MyAppBarState extends State<MyAppBar> {
@@ -44,7 +59,8 @@ class _MyAppBarPageState extends State<MyAppBarPage> {
   double myAlpha = 0;
   @override
   Widget build(BuildContext context) {
-    print("MyAppBarPage build");
+    var padding2 = MediaQuery.of(context).padding;
+    print("MyAppBarPage build padding2:$padding2");
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: MyAppBar(alpha: myAlpha),
