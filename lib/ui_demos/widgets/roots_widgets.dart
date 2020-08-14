@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterDemos/ui_demos/widgets/page_feature.dart';
 import 'package:flutterDemos/ui_demos/widgets/pager.dart';
+import 'package:flutterDemos/ui_demos/widgets/scale_size_label.dart';
 import 'package:flutterDemos/ui_demos/widgets/tab_pageViews.dart';
 import 'package:flutterDemos/ui_demos/widgets/tab_views.dart';
 import 'package:flutterDemos/ui_demos/widgets/textField_demo.dart';
@@ -29,6 +30,7 @@ class RootsWidgets extends StatelessWidget {
     "跑马灯Label", //10
     "自定义AppBar",
     "自定义AppBar改良版",
+    "自动缩小label",
   ];
 
   @override
@@ -118,6 +120,10 @@ class RootsWidgets extends StatelessWidget {
     }
     if (index == 12) {
       var page = GoodAppBarPage();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 13) {
+      var page = ScaleSizeLabelDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }

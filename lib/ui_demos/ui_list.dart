@@ -6,6 +6,7 @@ import 'package:flutterDemos/ui_demos/scrollable/root_scroll.dart';
 import 'package:flutterDemos/ui_demos/widgets/roots_widgets.dart';
 
 import 'dialog_widget/root_dialog.dart';
+import 'filers_ui/root_filter.dart';
 import 'layout_widgt/layout_list.dart';
 import 'life_cycles/root_life_cycle.dart';
 
@@ -19,7 +20,8 @@ class UIList extends StatelessWidget {
     "对话框",
     "动画",
     "Fluro 无参数",
-    "Fluro 有参数"
+    "Fluro 有参数",
+    "筛选Widgets",
   ];
   static const routeName = "UIList";
   static final routeSettings = RouteSettings(name: UIList.routeName);
@@ -87,6 +89,10 @@ class UIList extends StatelessWidget {
     }
     if (index == 8) {
       MyFluro().navigateFromBottom(ctx, MyFluro.fluro_demo2, "?id=100");
+    }
+    if (index == 9) {
+      var page = FilterViewDemos();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }
 }
