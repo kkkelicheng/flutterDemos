@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SingleChildSVDemo extends StatefulWidget {
@@ -13,47 +14,79 @@ class _SingleChildSVDemoState extends State<SingleChildSVDemo> {
         body: Container(
           margin: EdgeInsets.only(top: 100),
           color: Colors.grey[200],
-          child: SingleChildScrollView(
-            child: Column(
-              children: createColumeList(),
+          child: NotificationListener(
+            onNotification: (Notification notification) {
+              if (notification is ScrollNotification) {
+                _onScrollNotifation(notification);
+              }
+              return true;
+            },
+            child: Container(
+              height: 200, //200
+              width: double.infinity,
+              child: GestureDetector(
+                onTapUp: (details) => print("onTapUp"),
+                onVerticalDragCancel: () => print("onVerticalDragCancel"),
+                onVerticalDragDown: (detail) => print("onVerticalDragDown"),
+                onVerticalDragEnd: (detail) => print("onVerticalDragEnd"),
+                onVerticalDragStart: (details) => print("onVerticalDragStart"),
+                onVerticalDragUpdate: (details) => print("onVerticalDragUpdate"),
+                child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
+                  child: Column(
+                    children: createColumeList(),
+                  ),
+                ),
+              ),
             ),
           ),
         ));
   }
 
+  void _onScrollNotifation(ScrollNotification scrllNotifi) {
+    return;
+    var metris = scrllNotifi.metrics;
+    print("xxxxxxxxxxxxxxxxxxxxxx");
+    print(
+        "viewportDimension : ${metris.viewportDimension} "); //The extent of the viewport along the [axisDirection].
+    print("maxScrollExtent : ${metris.maxScrollExtent} "); //
+    print("minScrollExtent : ${metris.minScrollExtent} ");
+    print(
+        "pixels : ${metris.pixels} "); //The current scroll position, in logical pixels along the [axisDirection].
+    print("axisDirection :   ${metris.axisDirection} ");
+    print("atEdge : ${metris.atEdge}");
+    print(
+        "outOfRange : ${metris.outOfRange}"); //pixels < minScrollExtent || pixels > maxScrollExtent;
+    print("extentInside : ${metris.extentInside}");
+
+    ///
+    ///
+    /// - maxScrollExtent 能滚动的范围 = 内容的高度 - viewportDimension + padding的高度
+    /// 例如现在sv的高度是200，内容高度是300，padding高度是 5+10 ,所以此时maxScrollExtent是115
+    ///
+    ///
+    /// - outOfRange 代表 是否在可滑动的范围的外面，例如 可滑动是 0 - 115 ,你滑到115就是滑到底了
+    /// 然后你继续往上拉就是超过了 ，为true。
+    ///
+    ///
+    /// - extentInside 的解释
+    ///return viewportDimension
+    ///  // "above" overscroll value
+    ///  - (minScrollExtent - pixels).clamp(0, viewportDimension)
+    ///  // "below" overscroll value
+    ///  - (pixels - maxScrollExtent).clamp(0, viewportDimension);
+    /// pixels 为 160的时候
+    /// extentInside = 155
+    /// 最大滑动是115 其实你多滑动了45 然后就是 200（viewportDimension） - 45 = 155
+  }
+
   List<Widget> createColumeList() {
     return [
-      Text("""
-      据介绍，2020年全国夏粮播种面积26172千公顷，比2019年减少181.6千公顷，下降0.7%。
-      其中小麦播种面积22711千公顷，比2019年减少273.5千公顷，下降1.2%。
-
-　　夏粮播种面积减少主要有两大原因：
-一是农业供给侧结构性改革进一步深入，
-秋冬播种植结构调整优化。
-受市场需求和种植效益等因素影响，
-一些夏粮主产区主动扩种蔬菜、油菜籽等经济作物，
-适当调减小麦播种面积。二是华北平原地下水超采区季节性休耕制度推广实施，
-相关地区主动调减小麦播种面积。
-为进一步提高耕地质量，推进藏粮于地战略的实施，
-近年来我国在华北平原一些地区将季节性休耕制度与地下水超采综合治理相结合，
-实行“一季休耕、一季种植”种植模式。比如河北省在地下水超采区廊坊、
-保定、邯郸和雄安新区等47个县（市）组织实施季节性休耕限采措施，冬小麦播种面积减少较多。
-
-　　尽管2020年夏粮播种面积略减，但单产提高支撑了夏粮实现丰收增产。
-据介绍，今年全国夏粮单位面积产量5456.5公斤/公顷，比2019年增加83.4公斤/公顷，增长1.6%。
-其中小麦单位面积产量5798.0公斤/公顷，比2019年增加101.9公斤/公顷，增长1.8%。
-      """),
       Container(
         width: 100,
-        height: 100,
+        height: 300,
         color: Colors.red,
-      ),
-      ClipOval(
-        child: Container(
-          width: 150,
-          height: 150,
-          color: Colors.blue,
-        ),
       )
     ];
   }

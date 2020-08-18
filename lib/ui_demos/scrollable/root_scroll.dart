@@ -6,6 +6,7 @@ import 'package:flutterDemos/ui_demos/scrollable/wheel_scroll.dart';
 import 'custom_sv.dart';
 import 'grid_view.dart';
 import 'list_view.dart';
+import 'pullrefresh_demo.dart';
 
 class ScrollableDemos extends StatelessWidget {
   final List<String> demosTitles = [
@@ -15,7 +16,8 @@ class ScrollableDemos extends StatelessWidget {
     "单滚动模型 gradView",
     "pageView 可以看widgets",
     "多滚动模型 CustomScrollView",
-    "交错网格"
+    "交错网格",
+    "pull refresh demo"
   ];
 
   @override
@@ -77,6 +79,10 @@ class ScrollableDemos extends StatelessWidget {
     }
     if (index == 6) {
       var page = StaggerGridViewDemo();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 7) {
+      var page = PullRefreshDemo();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }
