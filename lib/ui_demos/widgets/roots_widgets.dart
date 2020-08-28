@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterDemos/ui_demos/widgets/carousels.dart';
 import 'package:flutterDemos/ui_demos/widgets/page_feature.dart';
 import 'package:flutterDemos/ui_demos/widgets/pager.dart';
 import 'package:flutterDemos/ui_demos/widgets/scale_size_label.dart';
@@ -33,6 +34,7 @@ class RootsWidgets extends StatelessWidget {
     "自定义AppBar改良版",
     "自动缩小label",
     "定义pullRefreshHeaderFooter",
+    "新闻标题轮播", //15
   ];
 
   @override
@@ -130,6 +132,10 @@ class RootsWidgets extends StatelessWidget {
     }
     if (index == 14) {
       var page = RefreshHeaderFooter();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 15) {
+      var page = NewsCarouselPage();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }
