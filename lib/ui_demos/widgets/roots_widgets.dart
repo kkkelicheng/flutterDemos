@@ -14,6 +14,7 @@ import 'expansion_tile.dart';
 import 'label_marquee.dart';
 import 'load_Image_demo.dart';
 import 'login_page.dart';
+import 'refresh_header_footer.dart';
 
 class RootsWidgets extends StatelessWidget {
   final List<String> demosTitles = [
@@ -31,6 +32,7 @@ class RootsWidgets extends StatelessWidget {
     "自定义AppBar",
     "自定义AppBar改良版",
     "自动缩小label",
+    "定义pullRefreshHeaderFooter",
   ];
 
   @override
@@ -124,6 +126,10 @@ class RootsWidgets extends StatelessWidget {
     }
     if (index == 13) {
       var page = ScaleSizeLabelDemo();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 14) {
+      var page = RefreshHeaderFooter();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }
