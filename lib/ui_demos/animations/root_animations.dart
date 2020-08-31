@@ -5,6 +5,7 @@ import 'animations2.dart';
 import 'animations3.dart';
 import 'animations4.dart';
 import 'animations_base.dart';
+import 'expand_collapse.dart';
 
 class RootAnitmations extends StatelessWidget {
   final List<String> demosTitles = [
@@ -13,6 +14,7 @@ class RootAnitmations extends StatelessWidget {
     "简单的非线性动画2",
     "动画组件demo",
     "自定义动画组件demo",
+    "测试一个",
   ];
 
   @override
@@ -60,8 +62,12 @@ class RootAnitmations extends StatelessWidget {
       var page = Animations3();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
-     if (index == 4) {
+    if (index == 4) {
       var page = Animations4();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 5) {
+      var page = ExpandCollapseAnimationPage();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }

@@ -11,10 +11,12 @@ import 'Expansio_panel.dart';
 import 'bottom_navigate_views.dart';
 import 'custom_appBar.dart';
 import 'custom_appBar2.dart';
+import 'custom_appBar3.dart';
 import 'expansion_tile.dart';
 import 'label_marquee.dart';
 import 'load_Image_demo.dart';
 import 'login_page.dart';
+import 'read_more_view.dart';
 import 'refresh_header_footer.dart';
 
 class RootsWidgets extends StatelessWidget {
@@ -35,6 +37,8 @@ class RootsWidgets extends StatelessWidget {
     "自动缩小label",
     "定义pullRefreshHeaderFooter",
     "新闻标题轮播", //15
+    "更多展示",
+    "自定义Appbar搜索",
   ];
 
   @override
@@ -136,6 +140,14 @@ class RootsWidgets extends StatelessWidget {
     }
     if (index == 15) {
       var page = NewsCarouselPage();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 16) {
+      var page = ReadMorePage();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 17) {
+      var page = NormalSearchBarPage();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }

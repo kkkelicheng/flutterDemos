@@ -162,7 +162,7 @@ class _MarqueeLabelState extends State<MarqueeLabel>
 }
 
 ///value: 文本内容；fontSize : 文字的大小；fontWeight：文字权重；maxWidth：文本框的最大宽度；maxLines：文本支持最大多少行
-double calculateTextHeight(String value, fontSize, FontWeight fontWeight,
+double calculateTextHeight(String value,double fontSize, FontWeight fontWeight,
     double maxWidth, int maxLines) {
   // value = filterText(value);
   TextPainter painter = TextPainter(
