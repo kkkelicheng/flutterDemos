@@ -34,7 +34,7 @@ class DioManager {
     if (response != null) {
       BaseEntity entity = BaseEntity.fromJson(response.data);
       if (entity.code == 200) {
-        return Future.value(entity);
+        return Future.value(entity).then((value) => null);
       } else {
         return Future.error(
             ErrorEntity(code: entity.code, message: entity.message));

@@ -42,6 +42,10 @@ dependencies:
   dio: 3.0.10
   dio_flutter_transformer: ^3.0.2
   pretty_dio_logger: ^1.1.1
+  # 跳转页面动画
+  page_transition: ^1.1.6
+  # 选择图片
+  image_picker: ^0.6.7+7
 
 dev_dependencies:
   flutter_test:
