@@ -5,6 +5,7 @@ import 'package:flutterDemos/ui_demos/scrollable/wheel_scroll.dart';
 
 import 'custom_sv.dart';
 import 'grid_view.dart';
+import 'list_in_cell.dart';
 import 'list_view.dart';
 import 'pullrefresh_demo.dart';
 
@@ -17,7 +18,8 @@ class ScrollableDemos extends StatelessWidget {
     "pageView 可以看widgets",
     "多滚动模型 CustomScrollView",
     "交错网格",
-    "pull refresh demo"
+    "pull refresh demo",
+    "cell中套list"
   ];
 
   @override
@@ -83,6 +85,10 @@ class ScrollableDemos extends StatelessWidget {
     }
     if (index == 7) {
       var page = PullRefreshDemo();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 8) {
+      var page = ListInCell();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }
