@@ -19,7 +19,8 @@ class ScrollableDemos extends StatelessWidget {
     "多滚动模型 CustomScrollView",
     "交错网格",
     "pull refresh demo",
-    "cell中套list"
+    "cell中套list",
+    "cell中套List2"
   ];
 
   @override
@@ -89,6 +90,10 @@ class ScrollableDemos extends StatelessWidget {
     }
     if (index == 8) {
       var page = ListInCell();
+      Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
+    }
+    if (index == 9) {
+      var page = ConfirmOrderPage();
       Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => page));
     }
   }

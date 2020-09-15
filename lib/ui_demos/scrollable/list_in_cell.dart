@@ -48,21 +48,32 @@ class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
       appBar: AppBar(title: Text("确认订单")),
       body: Container(
         color: Colors.black,
-        child: ListView.builder(itemBuilder: (ctx, index) {}),
+        child: ListView.builder(
+            itemCount: 3,
+            itemBuilder: (ctx, index) {
+              return BoxPaddingWraper(child: ConfirmOrderCell());
+            }),
       ),
     );
   }
 }
 
 class BoxPaddingWraper extends StatelessWidget {
-  Widget child;
+  final Widget child;
   BoxPaddingWraper({this.child});
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.blue,
       padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
-      color: Colors.white,
-      child: child,
+      width: double.infinity,
+      child: Container(
+        child: child,
+        decoration: BoxDecoration(
+          color: Colors.yellow,
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
     );
   }
 }
@@ -79,14 +90,43 @@ class _ConfirmOrderCellState extends State<ConfirmOrderCell> {
   }
 
   Widget goodListItem() {
+    // return Container(
+    //   child: Column(
+    //     children: <Widget>[
+    //       cellHeader(),
+    //       createGoods(),
+    //       cellFooter(),
+    //     ],
+    //   ),
+    // );
+
     return Column(
       children: <Widget>[
         cellHeader(),
-        goodTitleImage(),
-        goodProperties(),
+        createGoods(),
         cellFooter(),
       ],
     );
+  }
+
+  Widget createGoods() {
+    int goodCount = 3;
+    return ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: goodCount,
+        itemBuilder: (ctx, index) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              goodTitleImage(),
+              Divider(height: 0.5),
+              goodProperties(),
+              Divider(height: 0.5),
+            ],
+          );
+        });
   }
 
   Widget cellHeader() {
@@ -110,11 +150,14 @@ class _ConfirmOrderCellState extends State<ConfirmOrderCell> {
       padding: EdgeInsets.all(12),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Container(width: 64, height: 64, color: Colors.red),
           SizedBox(width: 8),
-          Text(
-              "三级抗震螺纹钢 HRB400E 25*12 三纲,三级抗震螺纹钢 HRB400E 25*12 三纲,三级抗震螺纹钢 HRB400E 25*12 三纲")
+          Expanded(
+            child: Text("三级抗震螺纹钢 HRB400E 25*12 三纲,三级抗震螺纹钢 HRB400E 25*12 三纲",
+                maxLines: 100),
+          )
         ],
       ),
     );
@@ -140,18 +183,27 @@ class _ConfirmOrderCellState extends State<ConfirmOrderCell> {
       padding: EdgeInsets.all(8),
       color: Colors.grey,
       child: Stack(
+        alignment: Alignment.centerRight,
         children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text("松石绿/4核J3160 4G 120SSD"),
-              SizedBox(height: 8),
-              Text("单价：79.00/件 x100")
-            ],
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text("松石绿/4核J3160 4G 120SSD"),
+                SizedBox(height: 8),
+                Text("单价：79.00/件 x100")
+              ],
+            ),
           ),
           Align(
             alignment: Alignment.centerRight,
-            child: Text("¥79.00"),
+            child: Container(
+              color: Colors.red,
+              width: 100,
+              height: 20,
+            ),
           )
         ],
       ),
